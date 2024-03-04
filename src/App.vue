@@ -6,8 +6,6 @@ import CardsList from './components/CardsList.vue';
 export default {
   data() {
     return {
-      cards: [],
-
       store,
     }
   },

@@ -1,6 +1,7 @@
 <script>
 import AppTitle from './AppTitle.vue';
 import CardItem from './CardItem.vue';
+import AppCount from './AppCount.vue';
 
 import {store} from '../data/store.js';
 
@@ -9,7 +10,8 @@ export default {
  
       components: {
         AppTitle,
-        CardItem
+        CardItem,
+        AppCount
       },
     
       data() {
@@ -42,6 +44,7 @@ export default {
   
     <div v-if="loading" class="loader">Loading...</div>
     <div v-else>
+      <AppCount></AppCount>
       <ul>
         <CardItem v-for=" currentCard in store.cards" 
         :card="currentCard">
@@ -74,6 +77,7 @@ ul {
 
    background-color: white;
    border: solid white 40px;
+   border-top: 0;
     
   }
 </style>
