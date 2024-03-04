@@ -1,5 +1,4 @@
 <script>
-import AppTitle from './AppTitle.vue';
 import CardItem from './CardItem.vue';
 import AppCount from './AppCount.vue';
 
@@ -9,7 +8,6 @@ export default {
   name: 'CardsList',
  
       components: {
-        AppTitle,
         CardItem,
         AppCount
       },
@@ -17,21 +15,14 @@ export default {
       data() {
         return {
           store,
-          loading: true,
       }
     },
 
 
-    created() {
-      setTimeout(() => {
-        this.loading = false;
-      },1000);
-    }
 }
 </script>
 
 <template>
-  <AppTitle></AppTitle>
   
   <div class="container">
     <select>
@@ -42,8 +33,7 @@ export default {
       <option>Option 5</option>
     </select>
   
-    <div v-if="loading" class="loader">Loading...</div>
-    <div v-else>
+   
       <AppCount></AppCount>
       <ul>
         <CardItem v-for=" currentCard in store.cards" 
@@ -51,7 +41,7 @@ export default {
 
         </CardItem>
       </ul>
-    </div>
+    
   </div>
 </template>
 
