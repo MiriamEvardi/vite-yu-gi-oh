@@ -19,6 +19,7 @@ export default {
     }).catch(err => {
       console.log(err)
     })
+
   },
 
   components: {
@@ -29,7 +30,10 @@ export default {
 </script>
 
 <template>
-  <CardsList></CardsList>
+  
+  
+    <CardsList></CardsList>
+
 </template>
 
 <style lang="scss">
