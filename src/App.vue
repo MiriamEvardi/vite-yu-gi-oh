@@ -3,6 +3,7 @@ import axios from 'axios';
 import AppTitle from './components/AppTitle.vue';
 import { store } from './data/store';
 import CardsList from './components/CardsList.vue';
+import AppFilter from './components/AppFilter.vue';
 
 export default {
   data() {
@@ -25,7 +26,8 @@ export default {
 
   components: {
     CardsList,
-    AppTitle
+    AppTitle,
+    AppFilter,
   }
 }
 
@@ -33,6 +35,7 @@ export default {
 
 <template>
     <AppTitle></AppTitle>
+    <AppFilter></AppFilter>
 
     <div class="container" v-if="isLoading"> 
       Loading..
