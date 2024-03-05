@@ -1,15 +1,17 @@
 <script>
 import CardItem from './CardItem.vue';
 import AppCount from './AppCount.vue';
+import axios from 'axios';
 
 import {store} from '../data/store.js';
 
 export default {
   name: 'CardsList',
+  
  
       components: {
         CardItem,
-        AppCount
+        AppCount,
       },
     
       data() {
@@ -19,13 +21,30 @@ export default {
     },
 
 
+    created() {
+      this.filterNameArchetype();
+
+    },
+
+    methods: {
+
+      filterNameArchetype() {
+        axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php').then(res => {
+          this.store.archetypes = res.data;
+        }).catch(err => {
+        console.log(err)
+        }) 
+
+  }
+    }
+
+
 }
 </script>
 
 <template>
   
   <div class="container">
-   
       <AppCount></AppCount>
       <ul>
         <CardItem v-for=" currentCard in store.cards" 

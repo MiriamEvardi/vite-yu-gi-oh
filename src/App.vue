@@ -15,7 +15,6 @@ export default {
 
   created() {
     axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=0').then(res => {
-      console.log(res)
       this.store.cards = res.data.data;
       this.isLoading = false;
     }).catch(err => {
@@ -28,14 +27,27 @@ export default {
     CardsList,
     AppTitle,
     AppFilter,
+  },
+
+  methods: {
+
+    filterArchetype() {
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=' + this.store.filterText).then(res => {
+        this.store.cards = res.data.data;
+        console.log(res)
+      }).catch(err => {
+      console.log(err)
+      })
+  },
+       
+   }
   }
-}
 
 </script>
 
 <template>
     <AppTitle></AppTitle>
-    <AppFilter></AppFilter>
+    <AppFilter @filter="filterArchetype()"></AppFilter>
 
     <div class="container" v-if="isLoading"> 
       Loading..

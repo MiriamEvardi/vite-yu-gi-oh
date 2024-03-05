@@ -1,19 +1,25 @@
 <script>
+import {store} from '../data/store.js';
+
 
 export default {
-  
+
+  data() {
+    return {
+      store,
+    }
+  },
+
+
 }
 
 </script>
 
 <template>
     <div class="container">
-        <select>
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-            <option>Option 5</option>
+        <select v-model="store.filterText" @change="$emit('filter')">
+          <option v-for="archetype in store.archetypes" :value="archetype.archetype_name">{{ archetype.archetype_name }}
+      </option>
         </select>
     </div>  
    
