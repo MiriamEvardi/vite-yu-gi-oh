@@ -18,6 +18,7 @@ export default {
 <template>
     <div class="container">
         <select v-model="store.filterText" @change="$emit('filter')">
+          <option value="0"> Filtra archetipo</option>
           <option v-for="archetype in store.archetypes" :value="archetype.archetype_name">{{ archetype.archetype_name }}
       </option>
         </select>
